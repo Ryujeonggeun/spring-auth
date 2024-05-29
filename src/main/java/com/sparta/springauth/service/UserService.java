@@ -64,28 +64,28 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void login(LoginRequestDto requestDto, HttpServletResponse res) {
-
-        System.out.println("로그인 실행 !!!!!!!!!!!");
-
-        String username = requestDto.getUsername();
-        String password = requestDto.getPassword();
-
-        // 사용자 확인 후 없으면 에러처리
-        User user = userRepository.findByUsername(username).orElseThrow(
-                ()-> new IllegalArgumentException("등록된 사용자가 없습니다.")
-                );
-
-        // 비밀번호 확인
-        // matches( 평문(입력받은 패스워드) , 암호화되어 저장된 패스워드)
-        if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
-        }
-
-        // JWT 생성 및 쿠키에 저장 후 Response 객체에 추가
-        String token = jwtUtil.createToken(user.getUsername(), user.getRole());
-        System.out.println("Token = " +  token);
-        jwtUtil.addJwtToCookie(token,res);
-
-    }
+//    public void login(LoginRequestDto requestDto, HttpServletResponse res) {
+//
+//        System.out.println("로그인 실행 !!!!!!!!!!!");
+//
+//        String username = requestDto.getUsername();
+//        String password = requestDto.getPassword();
+//
+//        // 사용자 확인 후 없으면 에러처리
+//        User user = userRepository.findByUsername(username).orElseThrow(
+//                ()-> new IllegalArgumentException("등록된 사용자가 없습니다.")
+//                );
+//
+//        // 비밀번호 확인
+//        // matches( 평문(입력받은 패스워드) , 암호화되어 저장된 패스워드)
+//        if (!passwordEncoder.matches(password, user.getPassword())) {
+//            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+//        }
+//
+//        // JWT 생성 및 쿠키에 저장 후 Response 객체에 추가
+//        String token = jwtUtil.createToken(user.getUsername(), user.getRole());
+//        System.out.println("Token = " +  token);
+//        jwtUtil.addJwtToCookie(token,res);
+//
+//    }
 }
