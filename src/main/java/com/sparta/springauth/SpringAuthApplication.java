@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 // SpringSecurity 의 일부 기능 제외(학습에 방해)
+
 @SpringBootApplication
 public class SpringAuthApplication {
 

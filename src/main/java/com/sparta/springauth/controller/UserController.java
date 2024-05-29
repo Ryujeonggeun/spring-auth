@@ -39,6 +39,7 @@ public class UserController {
 
     @PostMapping("/user/login")
     public String login(LoginRequestDto requestDto, HttpServletResponse res) {
+        System.out.println("PostMapping 샐행 !!!!!!");
         try {
             userService.login(requestDto, res);
         } catch (Exception e) {

@@ -12,7 +12,6 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         model.addAttribute("username", userDetails.getUser().getUsername());
-        System.out.println(userDetails.getUser().getUsername());
         return "index";
     }
 }
